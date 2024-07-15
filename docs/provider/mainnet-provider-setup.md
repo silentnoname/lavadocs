@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning
 
-With the launch of `lava-testnet-2`, aspects of our provider setup have changed. TLS Certificates are now a required part of Provider setup. [Lavavisor](/lavavisor) is now the recommended route for running the provider process.
+With the launch of `lava-mainnet-1`, aspects of our provider setup have changed. TLS Certificates are now a required part of Provider setup. [Lavavisor](/lavavisor) is now the recommended route for running the provider process.
 
 :::
 
@@ -159,14 +159,14 @@ lavap test rpcprovider --from {WALLET} --endpoints "{ENDPOINTS}"
 lavap test rpcprovider --from {WALLET} --endpoints "{ENDPOINTS}"`
 
 # Example: checking your provider that is not staked yet, or when you want to add a new chain support
-# lavap test rpcprovider --from provider1_us --endpoints "provider-public-grpc:port,jsonrpc,ETH1 provider-public-grpc:port,rest,LAV1" --node {LAVA_RPC_NODE}
+# lavap test rpcprovider --from provider1_us --endpoints "provider-public-grpc:port,jsonrpc,ETH1 provider-public-grpc:port,rest,LAVA" --node {LAVA_RPC_NODE}
 
 # Expected output:
 # ...logs...
 # ----------------------------------------SUMMARY----------------------------------------
 
 # Tests Passed:
-# LAV1-rest; ETH1-jsonrpc
+# LAVA-rest; ETH1-jsonrpc
 
 # Tests Failed:
 #
@@ -242,10 +242,10 @@ Use the optional `--provider` flag to define a different address that will be us
 
 ### Stake Examples
 
-#### Lava Testnet in US (with specified validator)
+#### Lava Mainnet in US (with specified validator)
 
 ```bash
-lavap tx pairing stake-provider LAV1 \
+lavap tx pairing stake-provider LAVA \
   "50000000000ulava" \
    "lava.your-site.com:443,USC" USC \
    "validator_lava_address" \
@@ -520,7 +520,7 @@ lavap tx pairing unstake-provider [chain-id] {validator} [flags]
 #### Unstake with specified validator
 
 ```bash
-lavap tx pairing unstake-provider LAV1 \
+lavap tx pairing unstake-provider LAVA \
    "validator_lava_address" \
     --from "my_account_name" \
     --keyring-backend "test" \
@@ -533,7 +533,7 @@ lavap tx pairing unstake-provider LAV1 \
 #### Unstake with unspecified validator
 
 ```bash
-lavap tx pairing unstake-provider LAV1 \
+lavap tx pairing unstake-provider LAVA \
     --from "my_account_name" \
     --keyring-backend "test" \
     --chain-id "lava-mainnet-1" \
@@ -577,7 +577,7 @@ Note that the `unbond` command should be used because the proivder unbonds some 
 ```bash
 lavap tx dualstaking unbond "validator_lava_address" \ 
     "provider_lava_address" \
-    LAV1 \
+    LAVA \
     2010ulava \ 
     --from "my_account_name" \
     --keyring-backend "test" \
